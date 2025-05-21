@@ -1,0 +1,49 @@
+title,authors,year,doi,abstract,fullText,link
+Knowledge transformers : a link between learning and creativity,"[{'name': 'Duffy, Alex H.B.'}, {'name': 'Sim, Siang Kok'}]",2004,10.1017/s0890060404040181,"The purpose of this paper is to investigate whether knowledge transformers that are featured in the learning process are also present in the creative process. First, this was achieved by reviewing accounts of inventions and discoveries with the view of explaining them in terms of knowledge transformers. Second, this was achieved by reviewing models and theories of creativity and identifying the existence of the knowledge transformers. The investigation shows that there is some evidence to show that the creative process can be explained through knowledge transformers. Hence, it is suggested that one of links between learning and creativity is through the knowledge transformers",Not available,
+Knowledge transformers : a link between learning and creativity,"[{'name': 'Duffy, Alex H. B.'}, {'name': 'Sim, Siang Kok'}]",2002,,"The purpose of this paper is to investigate whether knowledge transformers which are featured in the learning process, are also present in the creative process. This is achieved by reviewing models and theories of creativity and identifying the existence of the knowledge transformers. The investigation shows that there is some evidence to show that the creative process can be explained through knowledge transformers. Hence, it is suggested that one of links between learning and creativity is through the knowledge transformers",Not available,
+"Prediction of remaining life of power transformers based on left
+  truncated and right censored lifetime data","[{'name': 'Hong, Yili'}, {'name': 'McCalley, James'}, {'name': 'McCalley, James'}, {'name': 'Meeker, William'}, {'name': 'Meeker, William'}]",2008,10.1214/00-aoas231,"Prediction of the remaining life of high-voltage power transformers is an
+important issue for energy companies because of the need for planning
+maintenance and capital expenditures. Lifetime data for such transformers are
+complicated because transformer lifetimes can extend over many decades and
+transformer designs and manufacturing practices have evolved. We were asked to
+develop statistically-based predictions for the lifetimes of an energy
+company's fleet of high-voltage transmission and distribution transformers. The
+company's data records begin in 1980, providing information on installation and
+failure dates of transformers. Although the dataset contains many units that
+were installed before 1980, there is no information about units that were
+installed and failed before 1980. Thus, the data are left truncated and right
+censored. We use a parametric lifetime model to describe the lifetime
+distribution of individual transformers. We develop a statistical procedure,
+based on age-adjusted life distributions, for computing a prediction interval
+for remaining life for individual transformers now in service. We then extend
+these ideas to provide predictions and prediction intervals for the cumulative
+number of failures, over a range of time, for the overall fleet of
+transformers.Comment: Published in at http://dx.doi.org/10.1214/00-AOAS231 the Annals of
+  Applied Statistics (http://www.imstat.org/aoas/) by the Institute of
+  Mathematical Statistics (http://www.imstat.org",Not available,
+A Recipe for State-and-Effect Triangles,"[{'name': 'Jacobs, Bart'}]",2017,10.23638/lmcs-13(2:6)2017,"In the semantics of programming languages one can view programs as state
+transformers, or as predicate transformers. Recently the author has introduced
+state-and-effect triangles which capture this situation categorically,
+involving an adjunction between state- and predicate-transformers. The current
+paper exploits a classical result in category theory, part of Jon Beck's
+monadicity theorem, to systematically construct such a state-and-effect
+triangle from an adjunction. The power of this construction is illustrated in
+many examples, covering many monads occurring in program semantics, including
+(probabilistic) power domains",Not available,
+Overcurrent Protection for Gyrotrons in EAST ECRH System,"[{'name': 'Feng, Jianqiang'}, {'name': 'Hu, Huaichuan'}, {'name': 'Liu, Fukun'}, {'name': 'Tang, Yunying'}, {'name': 'Xu, Handong'}, {'name': 'Xu, Weiye'}, {'name': 'Yang, Yong'}]",2017,10.1049/iet-smt.2017.0214,"In this paper, an overcurrent protection system is designed to ensure the
+safety of the gyrotrons in the EAST ECRH system. Two overcurrent protection
+systems were established, a fast one and a slow one. The fast one uses the
+current transformers as the current sensors. The models of the current
+transformers and the superconducting magnet were built to analyze the effect of
+the environmental magnetic field on the current transformers using FI method.
+The analysis results show that the magnetic induction at the position near the
+current transformers must less than 0.002 T, i.e., the current transformers
+should be placed at a distance greater than 2.2 meters from the magnet center
+to ensure its normal work. The slow one uses the shunt to monitor the currents.
+An anti-fuse FPGA and a timer is used to realize the signal processing in the
+fast protection circuit and the slow protection circuit respectively. The
+response time of the fast protection circuit is less than 100 ns, and the
+response time of the slow protection circuit is less than 31 {\mu}s.Comment: 8 pages, 11 figure",Not available,
+Superconducting Transformers,"[{'name': 'Sykulski, J.K.'}]",2017,10.1201/b12275-6,,Not available,
+An Analysis of Illocutioanry Acts of the Main Character of Transformers Movie “Dark of the Moon”,"[{'name': 'H, A. D. (Antonius)'}, {'name': 'Sihombing, L. (Lince)'}]",2013,,"The objectives of this research were to find out the five types of illocutionary acts, namely: Directive, Commisives, Expressive, Assertive, Declarative and the dominant one used in Transformers”Dark of the Moon”. This research was conducted by using quantitative descriptive design. It took 735 utterances taken from the subtitle of Transformers “Dark of the Moon” which were released in June 29, 2011. The result of analyzing found five types of process were used in Transformers “Dark of the Moon”, they were: Directive, Commisive, Expressive, Assertive and Declarative. There were 735 illocutionary acts in 735 utterances. The findings of data analysis showed that the total numbers of process from the five types of illocutionary acts were: Directive is 361 (47,94%) utterances. The total number of Commisive  is 39 (5,17%) utterances. The total number of Expressive is 58 (7,70%) utterances. The total number of Assertives is 294 (39,04%). And the total number of Declaratives is 1 (0,13%). It means that Directive is the most dominant type of Illocutionary Acts used in Transformers “Dark of the Moon” movie",Not available,

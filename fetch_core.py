@@ -1,21 +1,21 @@
-from keybert import KeyBERT
 import requests
+import pandas as pd
+from keybert import KeyBERT
+import fitz  # PyMuPDF for PDF parsing
+import os
 
-# ========== CONFIG ==========
-API_KEY = 'ZLQojgG1uJDYRdprWS8UhEzsIPM03cNi'  # <-- Replace with your CORE API key
+# ========= CONFIG =========
+API_KEY = 'ZLQojgG1uJDYRdprWS8UhEzsIPM03cNi'  # Replace with your actual CORE API key
 CORE_API_ENDPOINT = "https://api.core.ac.uk/v3/search/works"
-
-# ========== Initialize KeyBERT ==========
 kw_model = KeyBERT()
 
-# ========== Academic Synonym Mapping ==========
+# ========= Keyword Refinement =========
 def refine_keywords(keywords):
     replacements = {
         "ai": "artificial intelligence",
         "acquire": "language acquisition",
-        "acquire language": "language acquisition",
         "early childhood": "child language development",
-        "medical imaging": "medical image analysis",
+        "medical imaging": "medical image analysis"
     }
     refined = set()
     for phrase in keywords:
@@ -30,7 +30,7 @@ def refine_keywords(keywords):
             refined.add(phrase)
     return list(refined)
 
-# ========== Convert NL Query to Academic Keyword Query ==========
+# ========= Extract Keywords from NL Query =========
 def process_nl_query(nl_query, top_n=5):
     raw_keywords = kw_model.extract_keywords(
         nl_query,
@@ -47,13 +47,10 @@ def process_nl_query(nl_query, top_n=5):
     print("🔧 Refined Keywords:", refined)
     return ' OR '.join(f'"{word}"' for word in refined)
 
-# ========== Query CORE API ==========
+# ========= CORE API Search =========
 def query_core_api(keyword_query, max_results=10):
     headers = {'Authorization': f'Bearer {API_KEY}'}
-    params = {
-        'q': keyword_query,
-        'limit': max_results
-    }
+    params = {'q': keyword_query, 'limit': max_results}
     response = requests.get(CORE_API_ENDPOINT, headers=headers, params=params)
     if response.status_code == 200:
         return response.json().get('results', [])
@@ -61,30 +58,62 @@ def query_core_api(keyword_query, max_results=10):
         print("❌ Error:", response.status_code, response.text)
         return []
 
-# ========== Display Results ==========
-def show_paper_results(papers):
-    if not papers:
-        print("\n🚫 No papers found. Try rephrasing your query.")
-        return
-    for idx, paper in enumerate(papers, 1):
-        print(f"\n📄 Paper {idx}")
-        print("Title:", paper.get('title'))
-        print("Authors:", paper.get('authors', []))
-        print("Year:", paper.get('yearPublished'))
-        print("DOI:", paper.get('doi'))
-        print("Full Text:", paper.get('fullTextLink'))
-        print("Abstract:", paper.get('abstract') or "No abstract available")
-        print("-" * 50)
+# ========= PDF Text Extractor =========
+def extract_text_from_pdf_link(link):
+    try:
+        response = requests.get(link)
+        if response.status_code == 200:
+            pdf_path = "temp.pdf"
+            with open(pdf_path, "wb") as f:
+                f.write(response.content)
+            with fitz.open(pdf_path) as doc:
+                full_text = ""
+                for page in doc:
+                    full_text += page.get_text()
+            os.remove(pdf_path)
+            return full_text.strip()
+    except Exception as e:
+        print(f"⚠️ PDF extraction failed: {e}")
+    return None
 
-# ========== MAIN PIPELINE ==========
-def process_query_and_fetch_papers(nl_query):
+# ========= Download Full Texts =========
+def get_full_texts(papers):
+    full_texts = []
+    for paper in papers:
+        title = paper.get('title', 'No Title')
+        link = paper.get('fullTextLink')
+        print(f"\n📥 Fetching PDF: {title}")
+        text = extract_text_from_pdf_link(link) if link else None
+        full_texts.append({
+            'title': title,
+            'authors': paper.get('authors', []),
+            'year': paper.get('yearPublished'),
+            'doi': paper.get('doi'),
+            'abstract': paper.get('abstract', ''),
+            'fullText': text if text else "Not available",
+            'link': link
+        })
+    return full_texts
+
+# ========= Save to CSV =========
+def save_papers_to_csv(data, filename="core_papers_fulltext.csv"):
+    df = pd.DataFrame(data)
+    df.to_csv(filename, index=False)
+    print(f"\n✅ Saved to {filename}")
+
+# ========= MAIN =========
+def process_query_and_fetch_papers(nl_query, max_results=10):
     print("\n🔍 Natural Language Query:", nl_query)
     keyword_query = process_nl_query(nl_query)
-    print("🎯 CORE API Keyword Query:", keyword_query)
-    papers = query_core_api(keyword_query)
-    show_paper_results(papers)
+    print("🎯 CORE API Query:", keyword_query)
+    papers = query_core_api(keyword_query, max_results=max_results)
+    if not papers:
+        print("❌ No papers found.")
+        return
+    results = get_full_texts(papers)
+    save_papers_to_csv(results)
 
-# ========== Example ==========
+# ========= Run =========
 if __name__ == "__main__":
-    nl_query =input("Enter the query:")
-    process_query_and_fetch_papers(nl_query)
+    query = input("Enter your research topic: ")
+    process_query_and_fetch_papers(query, max_results=10)
