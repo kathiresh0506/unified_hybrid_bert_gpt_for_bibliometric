@@ -1,18 +1,15 @@
 import streamlit as st
 import pandas as pd
 import json
-
 from pathlib import Path
-from your_pipeline1 import (
+
+from your_pipeline2 import (
     fetch_and_save_papers,
     enrich_papers,
     build_knowledge_graph,
     cluster_texts,
     summarize_clusters,
-    visualize_graph,
-    print_enriched_papers,
-    print_clusters,
-    print_summaries
+    visualize_graph
 )
 
 # === STREAMLIT CONFIG ===
@@ -67,6 +64,5 @@ if st.button("🚀 Run Pipeline") and query:
             graph_html = f.read()
         st.components.v1.html(graph_html, height=600, scrolling=True)
 
-# Optional footer
 st.markdown("---")
 st.markdown("Made with ❤️ using arXiv, BERT, GROQ, and Neo4j.")
