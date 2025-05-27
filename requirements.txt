@@ -1,11 +1,12 @@
 streamlit
 feedparser
 pandas
+numpy
 scikit-learn
-sentence-transformers
 keybert
-openai
+sentence-transformers
 python-dotenv
+openai
 neo4j
 pyvis
-tqdm
+PyPDF2
