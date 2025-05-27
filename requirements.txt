@@ -1,4 +1,5 @@
 streamlit
+feedparser
 pandas
 scikit-learn
 sentence-transformers
