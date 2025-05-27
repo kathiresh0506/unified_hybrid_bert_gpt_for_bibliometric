@@ -10,7 +10,7 @@ from openai import OpenAI
 from neo4j import GraphDatabase
 
 # === HARDCODED SECRETS ===
-API_KEY = "gsk_HHLbRtjA38SbBpOCFNdNWGdyb3FYfVmDO9rw09sWXessrLC8e"
+API_KEY = "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"
 NEO4J_URI = "neo4j+s://398c4cbb.databases.neo4j.io"
 NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "MoRiYhLULubPW3Q722MLGx8Eq4ScSyOScHX1N348kaM"
